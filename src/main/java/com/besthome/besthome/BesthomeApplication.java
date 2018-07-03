@@ -1,0 +1,12 @@
+package com.besthome.besthome;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BesthomeApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BesthomeApplication.class, args);
+	}
+}
