@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/test")
+@RestController
 public class DemoController {
 
     @RequestMapping("/demo")
     public String demoMethod() {
-        return "hello world!";
+        return "hello world!222";
     }
 }
