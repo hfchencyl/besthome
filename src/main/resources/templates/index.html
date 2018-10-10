@@ -3,14 +3,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>基于 layui 的极简社区页面模版</title>
+    <title>BHOME</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="fly,layui,前端社区">
-    <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
+    <meta name="keywords" content="besthome">
+    <meta name="description" content="besthome">
 
     <link rel="stylesheet" th:href="@{/css/global.css}"></link>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}"></link>
-
 
 </head>
 <body>
@@ -20,7 +19,7 @@
             <a class="fly-logo" href="/">
             <img th:src="@{/images/logo.png}" alt="layui">
         </a>
-        <ul class="layui-nav fly-nav layui-hide-xs">
+       <!-- <ul class="layui-nav fly-nav layui-hide-xs">
             <li class="layui-nav-item layui-this">
                 <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
             </li>
@@ -30,7 +29,7 @@
             <li class="layui-nav-item">
                 <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
             </li>
-        </ul>
+        </ul>-->
 
         <ul class="layui-nav fly-nav-user">
 
@@ -38,6 +37,7 @@
             <li class="layui-nav-item">
                 <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
             </li>
+           <!--
             <li class="layui-nav-item">
                 <a href="user/login.html">登入</a>
             </li>
@@ -49,7 +49,7 @@
             </li>
             <li class="layui-nav-item layui-hide-xs">
                 <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
-            </li>
+            </li>-->
 
             <!-- 登入后的状态 -->
             <!--
