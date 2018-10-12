@@ -9,15 +9,8 @@
 <body>
 
 <!-- 你的HTML代码 -->
-<script th:src="@{/layui/layui.js}"></script>
-<script>
-    //一般直接写在一个js文件中
-    layui.use(['layer', 'form'], function(){
-        var layer = layui.layer
-            ,form = layui.form;
+<script th:src="@{/layui/layui.all.js}"></script>
+<script th:src="@{/bh/mods/index.js}"></script>
 
-        layer.msg('Hello World');
-    });
-</script>
 </body>
 </html>
