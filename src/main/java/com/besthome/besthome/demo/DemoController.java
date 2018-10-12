@@ -9,6 +9,6 @@ public class DemoController {
 
     @RequestMapping("/demo")
     public String demoMethod() {
-        return "index";
+        return "/demo/demo";
     }
 }
