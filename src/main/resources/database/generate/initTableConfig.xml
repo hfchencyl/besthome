@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="f:\repository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>
+
+    <context id="paasTables" targetRuntime="MyBatis3">
+    
+    	<!-- 自动生成toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 自定义方法 -->
+        <plugin type="com.besthome.besthome.dao.generator.plugin.MapperPlugin">
+        </plugin>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:9001/loan-accounting-dev?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root"
+                        password="cold">
+        </jdbcConnection>
+
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.besthome.besthome.dao.entity"
+                            targetProject="F:\besthome\code\daoinfo">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.besthome.besthome.dao.mapper"
+                         targetProject="F:\besthome\code\daoinfo">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.besthome.besthome.dao.mapper"
+                             targetProject="F:\besthome\code\daoinfo">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+            <table schema="loan-accounting-dev" tableName="TB_RECONCILIATION_CONFIG" domainObjectName="ReconciliationConfig"/>
+            <!--<table schema="loan-accounting-dev" tableName="TB_RECONCILIATION_FILE_DETAIL" domainObjectName="ReconciliationFileDetail"/>-->
+
+    </context>
+</generatorConfiguration>
