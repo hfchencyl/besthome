@@ -19,7 +19,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:9001/loan-accounting-dev?useUnicode=true&amp;characterEncoding=UTF-8"
+                        connectionURL="jdbc:mysql://127.0.0.1:9001/bh_data?useUnicode=true&amp;characterEncoding=UTF-8"
                         userId="root"
                         password="cold">
         </jdbcConnection>
@@ -45,8 +45,12 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-            <table schema="loan-accounting-dev" tableName="TB_RECONCILIATION_CONFIG" domainObjectName="ReconciliationConfig"/>
-            <!--<table schema="loan-accounting-dev" tableName="TB_RECONCILIATION_FILE_DETAIL" domainObjectName="ReconciliationFileDetail"/>-->
+        <table schema="bh-data" tableName="bh_content" domainObjectName="Content"/>
+        <table schema="bh-data" tableName="bh_content_module" domainObjectName="ContentModule"/>
+        <table schema="bh-data" tableName="bh_discussion" domainObjectName="Discussion"/>
+        <table schema="bh-data" tableName="bh_role" domainObjectName="Role"/>
+        <table schema="bh-data" tableName="bh_user" domainObjectName="User"/>
+        <table schema="bh-data" tableName="bh_user_role_rel" domainObjectName="UserRoleRel"/>
 
     </context>
 </generatorConfiguration>

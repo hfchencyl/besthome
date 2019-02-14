@@ -25,7 +25,6 @@ public class Generator
 	{
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
-//		Resource resource = new ClassPathResource("generate/cold/cold-config.xml");
 		Resource resource = new ClassPathResource("database/generate/initTableConfig.xml");
 		ConfigurationParser cp = new ConfigurationParser(warnings);
 		Configuration config = cp.parseConfiguration(resource.getFile());

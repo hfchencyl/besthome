@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.besthome.besthome.dao.mapper.DiscussionMapper" >
+  <resultMap id="BaseResultMap" type="com.besthome.besthome.dao.entity.Discussion" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="content_id" property="contentId" jdbcType="INTEGER" />
+    <result column="discussion" property="discussion" jdbcType="VARCHAR" />
+    <result column="discuss_persion" property="discussPersion" jdbcType="VARCHAR" />
+    <result column="agree_count" property="agreeCount" jdbcType="INTEGER" />
+    <result column="dis_agree_count" property="disAgreeCount" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, content_id, discussion, discuss_persion, agree_count, dis_agree_count, create_time, 
+    update_time, is_deleted
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.besthome.besthome.dao.entity.DiscussionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bh_discussion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bh_discussion
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bh_discussion
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.besthome.besthome.dao.entity.DiscussionExample" >
+    delete from bh_discussion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.besthome.besthome.dao.entity.Discussion" >
+    insert into bh_discussion (id, content_id, discussion, 
+      discuss_persion, agree_count, dis_agree_count, 
+      create_time, update_time, is_deleted
+      )
+    values (#{id,jdbcType=INTEGER}, #{contentId,jdbcType=INTEGER}, #{discussion,jdbcType=VARCHAR}, 
+      #{discussPersion,jdbcType=VARCHAR}, #{agreeCount,jdbcType=INTEGER}, #{disAgreeCount,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.besthome.besthome.dao.entity.Discussion" >
+    insert into bh_discussion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="contentId != null" >
+        content_id,
+      </if>
+      <if test="discussion != null" >
+        discussion,
+      </if>
+      <if test="discussPersion != null" >
+        discuss_persion,
+      </if>
+      <if test="agreeCount != null" >
+        agree_count,
+      </if>
+      <if test="disAgreeCount != null" >
+        dis_agree_count,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="contentId != null" >
+        #{contentId,jdbcType=INTEGER},
+      </if>
+      <if test="discussion != null" >
+        #{discussion,jdbcType=VARCHAR},
+      </if>
+      <if test="discussPersion != null" >
+        #{discussPersion,jdbcType=VARCHAR},
+      </if>
+      <if test="agreeCount != null" >
+        #{agreeCount,jdbcType=INTEGER},
+      </if>
+      <if test="disAgreeCount != null" >
+        #{disAgreeCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.besthome.besthome.dao.entity.DiscussionExample" resultType="java.lang.Integer" >
+    select count(*) from bh_discussion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bh_discussion
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.contentId != null" >
+        content_id = #{record.contentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.discussion != null" >
+        discussion = #{record.discussion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.discussPersion != null" >
+        discuss_persion = #{record.discussPersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agreeCount != null" >
+        agree_count = #{record.agreeCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.disAgreeCount != null" >
+        dis_agree_count = #{record.disAgreeCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDeleted != null" >
+        is_deleted = #{record.isDeleted,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bh_discussion
+    set id = #{record.id,jdbcType=INTEGER},
+      content_id = #{record.contentId,jdbcType=INTEGER},
+      discussion = #{record.discussion,jdbcType=VARCHAR},
+      discuss_persion = #{record.discussPersion,jdbcType=VARCHAR},
+      agree_count = #{record.agreeCount,jdbcType=INTEGER},
+      dis_agree_count = #{record.disAgreeCount,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{record.isDeleted,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.besthome.besthome.dao.entity.Discussion" >
+    update bh_discussion
+    <set >
+      <if test="contentId != null" >
+        content_id = #{contentId,jdbcType=INTEGER},
+      </if>
+      <if test="discussion != null" >
+        discussion = #{discussion,jdbcType=VARCHAR},
+      </if>
+      <if test="discussPersion != null" >
+        discuss_persion = #{discussPersion,jdbcType=VARCHAR},
+      </if>
+      <if test="agreeCount != null" >
+        agree_count = #{agreeCount,jdbcType=INTEGER},
+      </if>
+      <if test="disAgreeCount != null" >
+        dis_agree_count = #{disAgreeCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.besthome.besthome.dao.entity.Discussion" >
+    update bh_discussion
+    set content_id = #{contentId,jdbcType=INTEGER},
+      discussion = #{discussion,jdbcType=VARCHAR},
+      discuss_persion = #{discussPersion,jdbcType=VARCHAR},
+      agree_count = #{agreeCount,jdbcType=INTEGER},
+      dis_agree_count = #{disAgreeCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
